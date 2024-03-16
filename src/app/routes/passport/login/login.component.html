@@ -1,0 +1,62 @@
+<div class="flex login-body">
+  <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form" class="loginInForm" [nzLayout]="'vertical'">
+    <div class="loginForm">
+      <nz-alert *ngIf="error" [nzType]="'error'" [nzMessage]="error" [nzShowIcon]="true" class="mb-lg"></nz-alert>
+
+      <div style="padding-top: 80px">
+        <h1 style="color: #263876; font-weight: 600">欢迎登录！</h1>
+        <!--				<h1 style="color: #263876; font-weight: 600">货运系统</h1>-->
+      </div>
+
+      <nz-form-item class="mt70" style="width: 400px">
+        <nz-form-label style="padding-bottom: 15px !important">
+          <span class="c000">账号</span>
+        </nz-form-label>
+        <nz-form-control>
+          <nz-input-group style="height: 45px; border-radius: 3px" nzSize="large">
+            <input nz-input formControlName="userName" placeholder="请输入用户名" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="mt30" style="width: 400px">
+        <nz-form-label style="padding-bottom: 15px !important">
+          <span class="c000">密码</span>
+        </nz-form-label>
+
+        <nz-form-control>
+          <nz-input-group style="height: 45px; border-radius: 3px" nzSize="large">
+            <input nz-input [type]="seePassword ? 'text' : 'password'" formControlName="password" placeholder="请输入密码" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item style="margin-bottom: 10px !important" *ngIf="showCaptcha">
+        <nz-form-control>
+          <nz-input-group style="height: 50px" nzSize="large" class="flex">
+            <div class="flex1 flex justify-content-center align-items-center">
+              <input style="height: 50px" nz-input formControlName="captchaVerCode" placeholder="请输入验证码" />
+            </div>
+            <div class="flex1 flex justify-content-center align-items-center">
+              <img (click)="cl()" [src]="captchaUrl" alt="验证码" class="cp" />
+            </div>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="padding-top: 60px">
+        <button
+          style="height: 60px; background-color: #5c81d9; border-width: 0px; width: 400px"
+          nz-button
+          [nzShape]="'round'"
+          type="submit"
+          nzType="primary"
+          nzSize="large"
+          [nzLoading]="http.loading"
+          nzBlock
+        >
+          <span class="ls2">立即登录</span>
+        </button>
+      </nz-form-item>
+    </div>
+  </form>
+</div>
