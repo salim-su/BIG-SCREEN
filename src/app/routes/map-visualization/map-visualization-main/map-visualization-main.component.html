@@ -1,6 +1,39 @@
 <div class="map-content">
 
-  <div class="top-banner-img"></div>
+  <!--  <div class="d1"></div>-->
+  <!--  <div class="d2"></div>-->
+  <!--  <div class="d3"></div>-->
+
+
+  <div class="top-banner-img">
+    <div *ngIf="yearMonthDay && week && times" class="time-info fll">
+      <span>{{ yearMonthDay }}</span>
+      <span class="ml10 mb2">|</span>
+      <span class="ml10">{{ week }}</span>
+      <span class="ml10 mb2">|</span>
+      <span class="ml10 mr50">{{ times }}</span>
+
+      <ng-container *ngIf="workSafetyDay">
+        <span>安全生产</span>
+        <span class="work-safety-day">{{ workSafetyDay }}</span>
+        <span>天</span>
+      </ng-container>
+
+    </div>
+
+    <div class="user-info flr flex align-items-center">
+      <div class="weather-background">
+        {{ weather }}
+      </div>
+
+      <div class="user">
+        <span>您好,</span>
+        <span>{{ user }}</span>
+        <span class="ml10 mr10 mb2">|</span>
+        <span class="mr15">退出</span>
+      </div>
+    </div>
+  </div>
 
   <div
     appMapPanel
@@ -11,25 +44,27 @@
   >
   </div>
 
-  <div class="map-content-left">
+  <div class="map-content-left" [@rightToLeft]="isOpenLeft ? 'right' : 'left'">
     <div class="left-1"></div>
     <div class="left-2"></div>
+    1
   </div>
 
-  <div class="map-content-right">
+  <div class="map-content-right" [@leftToRight]="isOpenRight ? 'left' : 'right'">
     <div class="right-1"></div>
     <div class="right-2"></div>
   </div>
   <div class="map-content-bottom">
-
+    <div class="bottom-1"></div>
+    <div class="bottom-2"></div>
+    <div class="bottom-3"></div>
+    <div class="bottom-4"></div>
   </div>
 
-
-
   <!--echart测试-->
-<!--  <div style="width: 500px;height: 500px;position: absolute;left: 0;top: 0;z-index: 99999;" id="lineChart" #ccc>-->
+  <!--  <div style="width: 500px;height: 500px;position: absolute;left: 0;top: 0;z-index: 99999;" id="lineChart" #ccc>-->
 
-<!--  </div>-->
+  <!--  </div>-->
 
 </div>
 

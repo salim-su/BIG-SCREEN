@@ -6,9 +6,9 @@ export const salimAnimation = [
     state(
       'open',
       style({
-        width: '300px',
+        width: `${parseFloat('490') / 192.0}rem`,
         // opacity: 1,
-        backgroundColor: 'white'
+        // backgroundColor: 'transport'
       })
     ),
     state(
@@ -16,7 +16,7 @@ export const salimAnimation = [
       style({
         width: '0px',
         // opacity: 0,
-        backgroundColor: 'white'
+        // backgroundColor: 'transport'
       })
     ),
     transition('open => closed', [animate('0.3s')]),
@@ -33,7 +33,25 @@ export const salimAnimation = [
     state(
       'right',
       style({
-        right: '-435px'
+        right: `${parseFloat('490') / -192.0}rem`,
+        // display: 'none'
+      })
+    ),
+    transition('left => right', [animate('0.3s')]),
+    transition('right => left', [animate('0.3s')])
+  ]),
+  trigger('rightToLeft', [
+    // ...
+    state(
+      'right',
+      style({
+        left: '0px'
+      })
+    ),
+    state(
+      'left',
+      style({
+        left: `${parseFloat('490') / -192.0}rem`,
         // display: 'none'
       })
     ),
