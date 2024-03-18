@@ -15,14 +15,16 @@
     top: 0;
     z-index: 999;
     background-size: contain;
-    .time-info{
+
+    .time-info {
       font-size: 14px;
       margin-top: 10px;
       margin-left: 15px;
       display: flex;
       align-items: center;
       color: #3A4260;
-      .work-safety-day{
+
+      .work-safety-day {
         font-size: 20px;
         color: #2F6EFF;
         font-weight: bold;
@@ -30,8 +32,10 @@
         padding-right: 4px;
       }
     }
-    .user-info{
+
+    .user-info {
       height: 54px;
+
       .weather-background {
         height: 32px;
         line-height: 32px;
@@ -44,7 +48,8 @@
         padding-right: 10px;
         margin-right: 20px;
       }
-      .user{
+
+      .user {
         font-size: 14px;
       }
     }
@@ -53,6 +58,7 @@
   .map-content-left {
     position: absolute;
     top: 65px;
+
     .left-1 {
       width: 460px;
       height: 35.5vh;
@@ -79,6 +85,7 @@
   .map-content-right {
     position: absolute;
     top: 65px;
+
     .right-1 {
       width: 460px;
       height: 25vh;
@@ -99,18 +106,30 @@
       margin-bottom: 10px;
     }
   }
-  .map-content-bottom{
+
+  .map-content-bottom {
     position: absolute;
     bottom: 10px;
-    .bottom-1{
+
+    .bottom-1 {
       width: 460px;
       height: 24vh;
-      background: #0c3ea6;
       float: left;
       margin-left: 10px;
       border-radius: 10px;
+      background-color: rgba(255, 255, 255, .8);
     }
-    .bottom-2{
+
+    .bottom-2 {
+      width: 460px;
+      height: 24vh;
+      float: left;
+      margin-left: 20px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, .8);
+    }
+
+    .bottom-3 {
       width: 460px;
       height: 24vh;
       background: #0c3ea6;
@@ -118,15 +137,8 @@
       margin-left: 20px;
       border-radius: 10px;
     }
-    .bottom-3{
-      width: 460px;
-      height: 24vh;
-      background: #0c3ea6;
-      float: left;
-      margin-left: 20px;
-      border-radius: 10px;
-    }
-    .bottom-4{
+
+    .bottom-4 {
       width: 460px;
       height: 24vh;
       background: #0c3ea6;
@@ -135,21 +147,117 @@
       border-radius: 10px;
     }
   }
+
+  .title-line {
+    width: 100%;
+    height: 40px;
+    background-image: url("../../../../assets/img/split-line.png");
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% auto;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #1D2960;
+    font-weight: bold;
+    padding-left: 5px;
+
+    .arrows {
+      margin-left: 5px;
+      width: 22px;
+      height: 15px;
+      background-image: url("../../../../assets/img/arrows.png");
+      background-size: contain;
+    }
+  }
+
+  .left-1-content {
+    .tuntu {
+      width: 58px;
+      height: 64px;
+      background-image: url("../../../../assets/img/tuntu.png");
+      background-size: contain;
+    }
+  }
+
+  .q1, .q2 {
+    width: 47%;
+    height: 70px;
+    background-color: #EBF0FF;
+    border-radius: 3px;
+    border: 1px solid #97BAFF;
+    padding: 5px;
+
+    .q1-b {
+      height: 30px;
+      background: linear-gradient(to bottom, #155BFF, #83ACFF);
+      width: 100%;
+      border-radius: 3px;
+    }
+  }
 }
 
-.d1{
-  width: 500px;
-  height: 300px;
-  background: #0c3ea6;
-}
-.d2{
-  width: 500px;
-  height: 300px;
-  background: rebeccapurple;
-}
-.d3{
-  width: 500px;
-  height: 300px;
-  background: red;
+#tunTuPieChart1 {
+  height: 14vh;
 }
 
+#tunTuPieChart4 {
+  height: 25vh;
+  width: 300px;
+}
+#tunTuBarChart1 {
+  height: 20vh;
+}
+
+.left-2-bili {
+  width: 200px;
+  height: 100%;
+
+  .qu {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: #0c3ea6;
+  }
+}
+
+.left-2-content {
+  height: calc(100% - 40px);
+
+  .charts {
+    height: 100%;
+    //height: 240px;
+  }
+}
+.bottom-2-content{
+  height: calc(100% - 40px);
+  .bottom-2-title{
+    width: 100%;
+    height: 30px;
+    background-color: #3D7AFF;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .bottom-2-text{
+    width: 100%;
+    height: 30px;
+    background-color: #E1EBFF;
+    border-radius: 5px;
+    color: #000;
+  }
+  .bottom-2-text:nth-child(2n+1){
+    background-color: #ffffff !important;
+  }
+}
+.qu-san {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: #2D77FF;
+}
+.qu-za {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: #20DEE6;
+}

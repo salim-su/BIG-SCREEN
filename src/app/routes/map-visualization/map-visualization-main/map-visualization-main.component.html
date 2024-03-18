@@ -1,9 +1,7 @@
-<div class="map-content">
-
+<div class="map-content fs14">
   <!--  <div class="d1"></div>-->
   <!--  <div class="d2"></div>-->
   <!--  <div class="d3"></div>-->
-
 
   <div class="top-banner-img">
     <div *ngIf="yearMonthDay && week && times" class="time-info fll">
@@ -18,7 +16,6 @@
         <span class="work-safety-day">{{ workSafetyDay }}</span>
         <span>天</span>
       </ng-container>
-
     </div>
 
     <div class="user-info flr flex align-items-center">
@@ -45,18 +42,135 @@
   </div>
 
   <div class="map-content-left" [@rightToLeft]="isOpenLeft ? 'right' : 'left'">
-    <div class="left-1"></div>
-    <div class="left-2"></div>
-    1
+    <div class="left-1 pl15 pr15">
+      <div class="title-line">
+        年度吞吐量统计
+        <div class="arrows"></div>
+      </div>
+      <div class="left-1-content">
+        <div class="flex align-items-center pt10">
+          <div class="tuntu ml10 mr10"></div>
+          <div class="flex1">
+            <div><span class="fs22 fw">4069.44</span> <span class="c999"> (万吨) </span> </div>
+            <div class="fs14"> 年吞吐量 </div>
+          </div>
+          <div style="align-self: self-end" class="mr20">
+            <div class="fs14">同比去年</div>
+            <div style="color: #00e321" class="fs20">+20%</div>
+          </div>
+        </div>
+
+        <div class="flex justify-content-center mt5">
+          <div class="q1 mr5">
+            <div class="flex justify-content-center mb5">
+              <span class="flex1 tr pr15">集团指标</span>
+              <span class="flex1 pl20 fs16">3338</span>
+            </div>
+            <div class="q1-b flex justify-content-center cfff align-items-center">
+              <span class="flex1 tr pr15">完成计划</span>
+              <span class="flex1 pl20 fs16">33.3%</span>
+            </div>
+          </div>
+          <div class="q2 ml5">
+            <div class="flex justify-content-center mb5">
+              <span class="flex1 tr pr15">集团指标</span>
+              <span class="flex1 pl20 fs16">3338</span>
+            </div>
+            <div class="q1-b flex justify-content-center cfff align-items-center">
+              <span class="flex1 tr pr15">完成计划</span>
+              <span class="flex1 pl20 fs16">33.3%</span>
+            </div>
+          </div>
+        </div>
+        <div class="charts flex">
+          <div class="flex1" id="tunTuPieChart1" #tunTuPieChart1></div>
+          <div class="flex1" id="tunTuPieChart2" #tunTuPieChart2></div>
+          <div class="flex1" id="tunTuPieChart3" #tunTuPieChart3></div>
+        </div>
+      </div>
+    </div>
+    <div class="left-2 pl15 pr15">
+      <div class="title-line">
+        货类吞吐量统计
+        <div class="arrows"></div>
+      </div>
+
+      <div class="left-2-content">
+        <div class="charts flex">
+          <div class="flex1" id="tunTuPieChart4" #tunTuPieChart4> </div>
+          <div class="left-2-bili pb10 h flex justify-content-center flex-column">
+            <div class="flex align-items-center w" *ngFor="let item of quList">
+              <span [ngStyle]="{ backgroundColor: item.color }" class="qu mr5"></span>
+              <span class="mr5 flex1">{{ item.name }}</span>
+              <span class="mr5 flex1">2666</span>
+              <span class="mr5 flex1">26%</span>
+            </div>
+          </div>
+          <!--          <div class="flex1"></div>-->
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="map-content-right" [@leftToRight]="isOpenRight ? 'left' : 'right'">
-    <div class="right-1"></div>
+    <div class="right-1 pl15 pr15">
+      <div class="title-line">
+        月度吞吐量统计
+        <div class="arrows"></div>
+      </div>
+    </div>
     <div class="right-2"></div>
   </div>
   <div class="map-content-bottom">
-    <div class="bottom-1"></div>
-    <div class="bottom-2"></div>
+    <div class="bottom-1 pl15 pr15">
+      <div class="title-line flex w">
+        <div class="flex1 flex align-items-center">
+          月度吞吐量统计
+          <div class="arrows"></div>
+        </div>
+
+        <div class="flex align-items-center">
+          <div class="qu-san mr5"></div>
+          <span class="mr5">散货</span>
+          <div class="qu-za mr5"></div>
+          <span>杂货</span>
+        </div>
+      </div>
+      <div id="tunTuBarChart1" #tunTuBarChart1></div>
+    </div>
+    <div class="bottom-2 pl15 pr15">
+      <div class="title-line">
+        月度吞吐量统计
+        <div class="arrows"></div>
+      </div>
+
+      <div class="flex bottom-2-content">
+        <div class="flex1 h flex flex-column justify-content-around mr5">
+          <div class="bottom-2-title mb5 flex align-items-center cfff">
+            <div class="flex1 ml10">序号</div>
+            <div class="flex2">泊位</div>
+            <div class="flex2">吨数</div>
+          </div>
+          <div class="bottom-2-text mb5 c000 flex align-items-center" *ngFor="let item of [1,2,3,4];let i = index">
+            <div class="flex1 ml10">{{ i+1 }}</div>
+            <div class="flex2">泊位</div>
+            <div class="flex2">吨数</div>
+          </div>
+        </div>
+        <div class="flex1 h flex flex-column justify-content-around ml5">
+          <div class="bottom-2-title mb5 flex align-items-center cfff">
+            <div class="flex1 ml10">序号</div>
+            <div class="flex2">泊位</div>
+            <div class="flex2">吨数</div>
+          </div>
+          <div class="bottom-2-text mb5 c000 flex align-items-center" *ngFor="let item of [1,2,3,4];let i = index">
+            <div class="flex1 ml10">{{ i+4 }}</div>
+            <div class="flex2">泊位</div>
+            <div class="flex2">吨数</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="bottom-3"></div>
     <div class="bottom-4"></div>
   </div>
@@ -65,7 +179,6 @@
   <!--  <div style="width: 500px;height: 500px;position: absolute;left: 0;top: 0;z-index: 99999;" id="lineChart" #ccc>-->
 
   <!--  </div>-->
-
 </div>
 
 <!--<div class="map-content">-->
