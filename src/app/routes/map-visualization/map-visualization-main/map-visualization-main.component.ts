@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import * as echarts from 'echarts';
 import moment from 'moment/moment';
 
-import { salimAnimation } from '../../../shared/utils/animate';
+import {salimAnimation} from '../../../shared/utils/animate';
 
 @Component({
   selector: 'app-map-visualization-main',
@@ -28,22 +28,85 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
   tunTuPieChart3: any;
   tunTuPieChart4: any;
   tunTuBarChart1: any;
+  gangCunPieChart1: any;
   quList = [
-    { name: '有色矿', color: '#04A7F0' },
-    { name: '集袋', color: '#007AFF' },
-    { name: '钢材', color: '#8402FF' },
-    { name: '铁矿', color: '#01C702' },
-    { name: '化肥', color: '#CACF20' },
-    { name: '设备', color: '#E8395D' },
-    { name: '铁条', color: '#FF940A' }
+    {name: '有色矿', color: '#04A7F0'},
+    {name: '集袋', color: '#007AFF'},
+    {name: '钢材', color: '#8402FF'},
+    {name: '铁矿', color: '#01C702'},
+    {name: '化肥', color: '#CACF20'},
+    {name: '设备', color: '#E8395D'},
+    {name: '铁条', color: '#FF940A'}
   ];
+  ownerNameList = [
+    {name: '振翼', percent: 90},
+    {name: '中国诚通', percent: 80},
+    {name: '五矿', percent: 70},
+    {name: '佳润', percent: 60},
+    {name: '新德', percent: 50},
+    {name: '天津船务', percent: 40},
+    {name: '中信宁波', percent: 30},
+    {name: 'salim', percent: 20},
+    {name: 'su', percent: 10},
+    {name: 'lei', percent: 10}
+  ];
+  gcfbList = [
+    {total: 1500, value: 1048, name: '东区前场', color: '#5470c6',percent:90},
+    {total: 1000, value: 735, name: '物捷一库', color: '#91cc75',percent:80},
+    {total: 800, value: 580, name: '东区后场', color: '#fac858',percent:70},
+    {total: 1048, value: 484, name: '物捷二库', color: '#ee6666',percent:60},
+    {total: 1048, value: 300, name: '西区前场', color: '#73c0de',percent:50},
+    {total: 1048, value: 300, name: '洲丽库', color: '#3ba272',percent:40},
+    {total: 1048, value: 300, name: '西区后场', color: '#fc8452',percent:30}
+  ];
+  colors = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
 
-  constructor(private render2: Renderer2) {}
+  constructor(private render2: Renderer2) {
+  }
 
-  @ViewChild('ccc', { static: false }) myElement: ElementRef;
+  @ViewChild('ccc', {static: false}) myElement: ElementRef;
 
   ngAfterViewInit(): void {
     console.log(this.myElement);
+  }
+
+  loadGangCunPieChart1() {
+    this.gangCunPieChart1 = this.ec.init(document.getElementById('gangCunPieChart1'));
+    let gangCunPieChart1Option = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: false,
+      series: [
+        {
+          name: '港存分布',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 3,
+            borderColor: '#fff',
+            borderWidth: 1
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: false,
+              fontSize: 40,
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: this.gcfbList
+        }
+      ]
+    };
+    this.gangCunPieChart1.setOption(gangCunPieChart1Option);
   }
 
   loadTunTuBarChart1() {
@@ -83,16 +146,16 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
             show: false // 是否显示刻度标签
           },
 
-          axisLine: { show: false }, // 是否显示坐标轴轴线
+          axisLine: {show: false}, // 是否显示坐标轴轴线
 
-          splitLine: { show: false }
+          splitLine: {show: false}
         }
       ],
       grid: {
         bottom: '40px',
-        top:0,
-        left:0,
-        right:0
+        top: 0,
+        left: 0,
+        right: 0
       },
       series: [
         {
@@ -100,31 +163,35 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
           type: 'bar',
           data: [120, 132, 101, 134, 90, 230, 210, 134, 90, 230, 210, 230],
           stack: 'A',
-          itemStyle: {//自定义颜色
-            normal: { color: "#2D77FF" },
-          },
+          itemStyle: {
+            //自定义颜色
+            normal: {color: '#2D77FF'}
+          }
         },
         {
           name: '杂货',
           type: 'bar',
           stack: 'A',
           data: [150, 232, 201, 154, 190, 330, 410, 134, 90, 230, 210, 230],
-          itemStyle: {//自定义颜色
-            normal: { color: "#20DEE6" },
-          },
+          itemStyle: {
+            //自定义颜色
+            normal: {color: '#20DEE6'}
+          }
         },
         {
           name: '实际',
           type: 'line',
           data: [220, 182, 191, 234, 290, 330, 310, 134, 90, 230, 210, 230],
-          itemStyle: {//自定义颜色
-            normal: { color: "#FEC614" },
-          },
+          itemStyle: {
+            //自定义颜色
+            normal: {color: '#FEC614'}
+          }
         }
       ]
     };
     this.tunTuBarChart1.setOption(tunTuBarChart1Option);
   }
+
   loadTunTuPieChart4() {
     this.tunTuPieChart4 = this.ec.init(document.getElementById('tunTuPieChart4'));
     let tunTuPieChart4Option = {
@@ -424,7 +491,7 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
-            borderColor: '#fff',
+            borderColor: 'rgba(0, 0, 0, 0)',
             borderWidth: 1
           },
           label: {
@@ -442,8 +509,8 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
             show: false
           },
           data: [
-            { value: 1048, name: '散货' },
-            { value: 735, name: '杂货' }
+            {value: 1048, name: '散货'},
+            {value: 735, name: '杂货'}
           ]
         }
       ],
@@ -477,7 +544,7 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
-            borderColor: '#fff',
+            borderColor: 'rgba(0, 0, 0, 0)',
             borderWidth: 1
           },
           label: {
@@ -495,8 +562,8 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
             show: false
           },
           data: [
-            { value: 1048, name: '进口' },
-            { value: 735, name: '出口' }
+            {value: 1048, name: '进口'},
+            {value: 735, name: '出口'}
           ]
         }
       ],
@@ -530,7 +597,7 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
-            borderColor: '#fff',
+            borderColor: 'rgba(0, 0, 0, 0)',
             borderWidth: 1
           },
           label: {
@@ -548,8 +615,8 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
             show: false
           },
           data: [
-            { value: 1048, name: '内贸' },
-            { value: 735, name: '外贸' }
+            {value: 1048, name: '内贸'},
+            {value: 735, name: '外贸'}
           ]
         }
       ],
@@ -564,6 +631,7 @@ export class MapVisualizationMainComponent implements OnInit, AfterViewInit {
     this.loadTunTuPieChart3();
     this.loadTunTuPieChart4();
     this.loadTunTuBarChart1();
+    this.loadGangCunPieChart1();
 
     moment.locale('zh-cn');
     this.workSafetyDay = '1986';
